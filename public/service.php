@@ -1,50 +1,31 @@
 <?php
 require_once '../base.php';
 require_once '../src/config/db-config.php';
+require_once '../src/database/demande-db.php';
 
 
-//Determiner si le formulaire a été soumis
-// Utilisation d'un variable proposé par PHP superglobale $_SERVER
-// $_SERVEUR : tableau associatif contenant des informations sur la requete http
+$pdo = getConnexion();
+
 $erreurs = [];
 $prenom = "";
 $nom = "";
-$demande="";
-$email = "";
+$demande = "";
+$email="";
+
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    // Le formulaire a etait soumis !
-    // Traiter les données du formulaire
-    // Recuperer les valeurs saisies par l'utilisateur
-    // Superglobale $_POST : tableau associatif
     $prenom = $_POST['prenom'];
     $nom = $_POST['nom'];
     $demande = $_POST['demande'];
     $email = $_POST['email'];
 
-    // Validation des données
-    if (empty($prenom)) {
-        $erreurs['prenom'] = "Le prenom est obligatoire";
-    }
-    if (empty($nom)) {
-        $erreurs['nom'] = "Le nom est obligatoire";
-    }
-    if (empty($demande)) {
-        $erreurs['demande'] = "La demande est obligatoire";
-    }
-    if (empty($email)) {
-        $erreurs['email'] = "L'email est obligatoire";
-    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $erreurs['email'] = "L'email n'est pas valide";
-    }
-
-    // Traiter les données
     if (empty($erreurs)) {
-        //traitement des données (insertion dans une base de données)
-        // Rediriger l'utilisateur vers une autre page (la page d'acceuil)
-        header("Location: ../index.html");
-        exit();
+        $erreurs = InscriptionReservation($prenom, $nom, $demande, $email, $pdo);
+
     }
 }
+
+// Si aucune erreur, on peut procéder à l'inscription
 ?>
 
 <html lang="fr">
@@ -216,10 +197,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <form action="" method="post" novalidate>
                 <div class="mb-3">
                     <label for="prenom" class="form-label">Prénom*</label>
-                    <input
-                            type="text"
-                            class="form-control <?= (isset($erreurs['prenom'])) ? "border border-2 border-danger" : "" ?>
-                    id=" prenom"
+                    <input type="text"
+                           class="form-control <?= (isset($erreurs['prenom'])) ? "border border-2 border-danger" : "" ?>
+                    id="prenom"
                     name="prenom"
                     value="<?= $prenom ?>"
                     placeholder="Saisir votre prénom"

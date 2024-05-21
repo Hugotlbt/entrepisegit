@@ -46,7 +46,7 @@ function checkPassword($email, $password): bool
 
     return $hashedPassword !== false && password_verify($password, $hashedPassword);
 }
-function InscriptionClient($pseudo_utilisateur, $nom_utilisateur, $prenom_utilisateur, $adresse_utilisateur, $email_utilisateur, $mdp_utilisateur, $mdp_utilisateurCheck, $pdo) {
+function Inscriptionclient($pseudo_utilisateur, $nom_utilisateur, $prenom_utilisateur, $adresse_utilisateur, $email_utilisateur, $mdp_utilisateur, $mdp_utilisateurCheck, $pdo) {
     $erreurs = [];
 
     // Validation des données

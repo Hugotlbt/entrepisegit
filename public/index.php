@@ -29,7 +29,8 @@ require_once '../src/config/db-config.php'
                 <div class="col-md-8 fs-1 pointeur mt-5">Service de mix en ligne - Developpement de Vst
                     <p class="fs-2 "></p>
                     <p class="fs-4 justify-content-start">Notre équipe propose plusieurs produits et services dans le domaine de l'audiovisuel, notamment des plugins adaptables à tout logiciels de MAO (Musique assistée par ordinateur) mais aussi aux logiciels d'édition visuel. Nous disposons aussi de services en ligne de mix et mastering audio ainsi que de locaux afin d'enregistrer différentes pistes audio destinées à du podcast audio et de la création musicale.</p>
-                    <a href="notre-equipe.php"><button class="btn btn-primary btn-md fs-4" type="submit">Notre équipe</button>
+                    <p class="fs-4 justify-content-start">Le Virtual Studio Technology (VST) est un format ouvert de plug-in audio créé par Steinberg. Sa popularité en fait un standard en musique assistée par ordinateur : par le nombre d'effets et d'instruments virtuels créés dans ce format, et par sa compatibilité avec la majorité des stations audionumériques (DAW) et éditeurs audio (aussi bien sous Windows, Macintosh, et Linux).</p>
+                    <a href="notre-equipe.php"><button class="btn btn-primary btn-md fs-4 mb-5" type="submit">Notre équipe</button>
                     </a>
                 </div>
 
