@@ -70,6 +70,9 @@ function Inscriptionclient($pseudo_utilisateur, $nom_utilisateur, $prenom_utilis
     if (empty($mdp_utilisateur)) {
         $erreurs['mdp_utilisateur'] = "Le mot de passe est obligatoire";
     }
+    if (strlen($mdp_utilisateur) <= 7){
+        $erreurs['mdp_utilisateur'] = "Le mot de passe doit faire plus de 7 characters";
+    }
     if (empty($mdp_utilisateurCheck)) {
         $erreurs['mdp_utilisateurCheck'] = "Confirmer le mot de passe est obligatoire";
     }
